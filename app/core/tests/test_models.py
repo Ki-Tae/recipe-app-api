@@ -3,14 +3,15 @@ from django.contrib.auth import get_user_model
 # importing user directly is not recommended in django
 # instead use get_user_model function to import user
 
+
 class ModelTests(TestCase):
     def test_create_user_with_email_successful(self):
         """test creating a new user with an email is successful"""
         email = "test@example.com"
         password = "testpass123"
         user = get_user_model().objects.create_user(
-            email = email,
-            password = password
+            email=email,
+            password=password
         )
 
         self.assertEqual(user.email, email)
@@ -29,7 +30,7 @@ class ModelTests(TestCase):
             # code below here should raise Value Error
             #  or else the test will fail
             get_user_model().objects.create_user(None, 'test123')
-    
+
     def test_create_new_super_user(self):
         """ Test creating a new superuser"""
         user = get_user_model().objects.create_superuser(
